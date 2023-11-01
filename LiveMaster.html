@@ -1,0 +1,157 @@
+{% extends 'Base.html' %}
+
+{% block content %}
+ 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuttering Disorder</title>
+
+    <style>
+        /* Style the container */
+        .container2 {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the header */
+        .header {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Style the form */
+        .form {
+            text-align: center;
+        }
+
+        /* Style the file input */
+        .form input[type="file"] {
+            display: none;
+        }
+
+        .form label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form label:hover {
+            background-color: #0056b3;
+        }
+
+        .form input[type="file"] {
+            display: none;
+        }
+
+        /* Style the submit button */
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style the result section */
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .result h2 {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+
+
+
+
+</head><style>
+
+        body {
+            background-image: url('static/Assets/images/banner.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+    .button-container {
+    display: flex; /* Use flexbox to arrange the forms horizontally */
+}
+
+.button-form {
+    margin-right: 10px; /* Add some spacing between the forms (adjust as needed) */
+}
+
+/* Additional CSS styles for your buttons */
+.submit-button {
+    /* Add your button styles here */
+}
+    </style>
+<body>
+
+     <div class="container2">
+
+ <div class="alert alert-success" role="alert">
+  Press Talk button and 'Talk', after Click 'Done' button to get result
+</div>
+
+  <center>
+
+       <div class="alert alert-success" role="alert">
+
+<div class="button-container">
+    <form action="{{ url_for('start_recording') }}" method="POST" class="button-form">
+        <button class="submit-button" type="submit">Talk</button>
+    </form>
+
+    <form action="{{ url_for('stop_recording') }}" method="POST" class="button-form">
+        <button class="submit-button" type="submit">Done</button>
+    </form>
+
+    <a href="/"  class="submit-button" > Refresh
+
+       </a>
+</div>
+
+</div>
+
+     <br/>
+              {% if prediction %}
+            <div class="result">
+                <h2>This Voice Predicted As: {{ prediction }}</h2>
+                <br/>
+                <h2>Overall Stuttering disorder curing result is: {{ percentage_normal }} %</h2>
+            </div>
+        {% endif %}
+
+
+     </center>
+
+    </div>
+
+</body>
+{% endblock %}
